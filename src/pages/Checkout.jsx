@@ -1,5 +1,4 @@
-import vaciarCarrito from '../components/VaciarCarrito';
-import { Card, ListGroup, Button, Form } from 'react-bootstrap';
+import { Card, ListGroup, Button, Container } from 'react-bootstrap';
 
 const Checkout = ({ cart, setCart }) => {
   const handleQtyChange = (id, qty) => {
@@ -33,6 +32,7 @@ const Checkout = ({ cart, setCart }) => {
                       )}
                       <div>
                         <div className="fw-semibold">{p.desc}</div>
+                        <div className="text-muted text-start small">ID: {p.id}</div>
                         <div className="text-muted text-start">${p.precio} c/u</div>
                       </div>
                     </div>
