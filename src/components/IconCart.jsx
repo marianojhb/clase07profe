@@ -4,6 +4,7 @@ import { RiShoppingCart2Fill } from 'react-icons/ri';
 
 const IconCart = ({ cart }) => {
   const totalItems = cart.reduce((acumulador, producto) => acumulador + producto.cantidad, 0);
+  const totalAmount = cart.reduce((acumulador, producto) => acumulador + producto.cantidad * producto.precio, 0);
 
   return (
     <Link to="/checkout" style={{ textDecoration: 'none', color: 'inherit' }} aria-label="Ir al carrito">
@@ -11,6 +12,7 @@ const IconCart = ({ cart }) => {
         <div>
           <RiShoppingCart2Fill size={24} />
           &nbsp;&nbsp; Items:&nbsp;{totalItems}{' '}
+          &nbsp;&nbsp; $&nbsp;{totalAmount.toLocaleString()}{' '}
         </div>
       ) : (
         <div>
