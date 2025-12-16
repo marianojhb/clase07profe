@@ -29,3 +29,25 @@
 .Toastify__progress-bar {
   background: var(--bs-primary);
 }
+
+.btn-xs {
+  padding: 0.3rem 0.2rem;
+  font-size: 0.5rem;
+  line-height: 1;
+  border-width: 1px;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.btn-xs:hover {
+  border: 1 px solid black;
+  background-color: transparent;
+  transform: none;
+  transition: none;
+  box-shadow: none;
+}
+
+
+
+
+

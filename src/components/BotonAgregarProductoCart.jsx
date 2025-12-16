@@ -1,7 +1,8 @@
 import { toast } from 'react-toastify';
 
 const BotonAgregarProductoCart = ({ setCart, producto, cart }) => {
-  const handleAgregar = () => {
+  const handleAgregar = (e) => {
+    e.stopPropagation();
     // Considerar stock y mantenerlo en el carrito para validaciones
     const safeProducto = {
       ...producto,
@@ -46,7 +47,16 @@ const BotonAgregarProductoCart = ({ setCart, producto, cart }) => {
     }
   };
 
-  return <button onClick={handleAgregar} type="button" class="btn btn-primary">Agregar</button>;
+  return (
+    <button
+      onClick={handleAgregar}
+      type="button"
+      class="btn btn-primary"
+      style={{ fontSize: '0.9rem', cursor: 'copy' }}
+    >
+      Agregar
+    </button>
+  );
 };
 
 export default BotonAgregarProductoCart;
