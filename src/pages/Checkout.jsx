@@ -14,7 +14,7 @@ const Checkout = ({ cart, setCart }) => {
   return (
     <>
       <Container className="py-4">
-        <h2 className="mb-3">Tu carrito</h2>
+        <h2 className="mb-3">Mi carrito</h2>
 
         <ListGroup className="mb-4">
           {cart.map((p) => (
