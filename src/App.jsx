@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import ProductDetail from './pages/ProductDetail';
+import Account from './pages/Account';
 import About from './pages/About';
 import Checkout from './pages/Checkout';
 import Navegacion from './components/NavBar';
@@ -61,9 +63,11 @@ function App() {
     <>
       <Router>
         <div>
-          <Navegacion cart={cart} />
+          <Navegacion cart={cart} setCart={setCart} />
           <Routes>
+            <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/" element={<Home listadoDeProductos={listadoDeProductos} cart={cart} setCart={setCart} />} />
+            <Route path="/account" element={<Account />} />
             <Route path="/about" element={<About />} />
             <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} />} />
             <Route path="/contact" element={<Contact />} />
