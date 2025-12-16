@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import LoginPage from './pages/LoginPage';
 import ProductDetail from './pages/ProductDetail';
 import Account from './pages/Account';
 import About from './pages/About';
@@ -65,8 +66,8 @@ function App() {
         <div>
           <Navegacion cart={cart} setCart={setCart} />
           <Routes>
-            <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/" element={<Home listadoDeProductos={listadoDeProductos} cart={cart} setCart={setCart} />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/account" element={<Account />} />
             <Route path="/about" element={<About />} />
             <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} />} />
@@ -75,6 +76,7 @@ function App() {
               path="/products"
               element={<Products listadoDeProductos={listadoDeProductos} cart={cart} setCart={setCart} />}
             />
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
         </div>
       </Router>
