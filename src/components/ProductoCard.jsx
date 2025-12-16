@@ -1,17 +1,23 @@
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import BotonAgregarProductoCart from './BotonAgregarProductoCart';
+import { useNavigate } from 'react-router-dom';
 
 const ProductoCard = ({ producto, cart, setCart }) => {
+  const navigate = useNavigate();
   return (
     <>
-    <Card className="card border-light mb-3 h-100 " style={{ maxWidth: '20rem' }}>
+    {/* <Link to={`/products/${producto.id}`} className="text-decoration-none text-dark"> */}
+    <Card className="card border-light mb-3 h-100 " style={{ maxWidth: '20rem', cursor: 'pointer' }} onClick={() => navigate(`/products/${producto.id}`)}>
+      
       {producto.img && (
         <Card.Img variant="top" src={producto.img} alt={producto.desc} style={{ objectFit: 'cover', height: 160 }} />
       )}
-
+    
       <Card.Body className="d-flex flex-column">
-        <Card.Title className="mb-1">{producto.desc}</Card.Title>
-        <Card.Text className="text-muted mb-2">ID: {producto.id}</Card.Text>
+        
+        <Card.Title className="mb-1">{producto.name}</Card.Title>
+        <Card.Text className="text-muted mb-2">{producto.desc}<br/>ID: {producto.id}</Card.Text>
 
         <div className="mt-auto d-flex justify-content-between align-items-center">
           <span className="fw-bold">${producto.precio?.toLocaleString?.() || producto.precio}</span>
