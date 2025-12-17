@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import BotonAgregarProductoCart from '../components/BotonAgregarProductoCart';
 
-export default function ProductDetail() {
+export default function ProductDetail({ cart, setCart }) {
   const { id } = useParams();
   const [cargando, setCargando] = useState(false);
   const [errorCarga, setErrorCarga] = useState(null);
@@ -50,15 +51,16 @@ export default function ProductDetail() {
   return (
     <>
       <Container className="py-4">
-        {producto && (<h2 className="mb-3">{producto.name}</h2>)}
+        {producto && <h2 className="mb-3">{producto.name}</h2>}
         {cargando && <p>Cargando...</p>}
         {errorCarga && <p className="text-danger">{errorCarga}</p>}
         {producto && (
           <div>
-            <img src={producto.img} alt={producto.name} style={{ objectFit: 'cover', height: 400, width: 400 }}/>
+            <img src={producto.img} alt={producto.name} style={{ objectFit: 'cover', height: 400, width: 400 }} />
             <h3>{producto.name}</h3>
             <p>{producto.desc}</p>
             <p>Precio: ${producto.precio}</p>
+            <BotonAgregarProductoCart producto={producto} cart={cart} setCart={setCart} />
           </div>
         )}
       </Container>
