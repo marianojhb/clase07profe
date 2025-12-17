@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import ThemeDropdown from './components/ThemeDropDown';
 import LoginPage from './pages/LoginPage';
 import ProductDetail from './pages/ProductDetail';
 import Account from './pages/Account';

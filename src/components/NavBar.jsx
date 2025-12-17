@@ -2,6 +2,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import IconCart from './IconCart';
 import Account from '../pages/Account';
 import { NavLink } from 'react-router-dom';
+import ThemeDropdown from './ThemeDropdown';
 import Logo from '../assets/images/site/logo.webp';
 import { useNavigate } from 'react-router-dom';
 
@@ -60,9 +61,10 @@ const Navegacion = ({ cart, setCart }) => {
               <Nav.Link className="nav-items" as={NavLink} to={'/account'} style={{ marginRight: '5px' }} aria-label="Ir a mi cuenta">
                 Mi cuenta
               </Nav.Link>
-              <Nav.Link className="nav-items" as={NavLink} to={'/checkout'} style={{ textDecoration: 'none', color: 'inherit', border: '1px solid #d3d3d3'}} aria-label="Ir al carrito">
+              <Nav.Link className="nav-items" as={NavLink} to={'/checkout'} style={{ textDecoration: 'none', color: 'inherit', border: '1px solid #d3d3d3', marginRight: '5px' }} aria-label="Ir al carrito">
                 <IconCart  cart={cart} setCart={setCart} />
               </Nav.Link>
+              <ThemeDropdown  />  
             </Nav>
           </Navbar.Collapse>
         </Container>
