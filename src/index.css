@@ -47,6 +47,9 @@
   box-shadow: none;
 }
 
+#root {
+  padding: 1rem !important;
+}
 
 
 
