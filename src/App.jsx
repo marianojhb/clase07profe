@@ -82,10 +82,11 @@ function App() {
         </div>
       </Router>
 
-      {/* Mostrar cartel indicador de carga mientras se están cargando los datos */}
       {cargando && (
-        <div className="loading">
-          <img src={loadingicon} className="loading" alt="Cargando logo" />
+        <div className="loading-container">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Cargando...</span>
+          </div>
         </div>
       )}
       {errorCarga && <div className="error">{errorCarga}</div>}

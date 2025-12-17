@@ -18,11 +18,16 @@ const IconCart = ({ cart, setCart }) => {
         {totalItems > 0 ? <RiShoppingCart2Fill size={24} /> : <RiShoppingCart2Line size={24} />}
         &nbsp;&nbsp; Items:&nbsp;{totalItems} &nbsp;&nbsp; $&nbsp;{totalAmount.toLocaleString()} &nbsp;&nbsp;
         <Button
-          variant="outline-danger"
           size="sm"
           className="btn-xs align-top "
           onClick={(e) => vaciarCarrito(e)}
           aria-label="Vaciar carrito"
+          style={{
+            borderColor: 'var(--bs-body-color)',
+            color: 'var(--bs-body-color)',
+            // backgroundColor: 'transparent',
+            boxShadow: 'none',
+          }}
         >
           ✕
         </Button>

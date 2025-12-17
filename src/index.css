@@ -47,10 +47,59 @@
   box-shadow: none;
 }
 
+/* Override bootstrap theme */
+
 #root {
   padding: 1rem !important;
 }
 
+/* El selector hereda del html[data-bs-theme="dark"] */
+[data-bs-theme='dark'] .nav-tabs .nav-link.active,
+[data-bs-theme='dark'] .nav-tabs .nav-link:hover {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+[data-bs-theme='dark'] .nav-tabs {
+  border: 2px solid #fff;
+}
+
+.nav-tabs {
+  background-color: var(--bs-body-bg);
+}
+
+.nav-cart-link:not(:hover):not(.active) {
+  border: 1px solid #d3d3d3 !important;
+}
+
+.navbar {
+  gap: 0.5rem;
+}
+
+[data-bs-theme='dark'] .BsHouseFillColor {
+  color: #fff;
+}
 
 
 
+/* -------------- */
+
+
+.loading-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  text-align: center;
+}
+
+[data-bs-theme='dark'] .loading-container .spinner-border {
+  color: var(--bs-primary) !important;
+  border-color: currentColor;
+  border-right-color: transparent;
+}
+
+[data-bs-theme='light'] .loading-container .spinner-border {
+  color: var(--bs-primary) !important;
+}

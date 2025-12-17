@@ -5,6 +5,8 @@ import { NavLink } from 'react-router-dom';
 import ThemeDropdown from './ThemeDropdown';
 import Logo from '../assets/images/site/logo.webp';
 import { useNavigate } from 'react-router-dom';
+import { BsHouseFill } from 'react-icons/bs';
+
 
 const Navegacion = ({ cart, setCart }) => {
   const navigate = useNavigate();
@@ -35,14 +37,14 @@ const Navegacion = ({ cart, setCart }) => {
               className="d-inline-block align-top me-2"
             />
              </Container>
-      <Navbar expand="lg" className="nav nav-tabs sticky-top bg-white" style={{ top: '10px' }} role="tablist">
+      <Navbar expand="lg" className="nav nav-tabs sticky-top" style={{ top: '10px' }} role="tablist">
         <Container>
           <Navbar.Brand as={NavLink} to={'/'}>
-            
+            <BsHouseFill size={24} className="BsHouseFillColor" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto nav-items">
+            <Nav className="me-auto nav-items" style={{ gap: '0.2rem' }}>
               {links.map((link, index) => (
                 <Nav.Link
                   key={index}
@@ -57,11 +59,11 @@ const Navegacion = ({ cart, setCart }) => {
                 </Nav.Link>
               ))}
             </Nav>
-            <Nav>
-              <Nav.Link className="nav-items" as={NavLink} to={'/account'} style={{ marginRight: '5px' }} aria-label="Ir a mi cuenta">
+            <Nav style={{ gap: '0.2rem' }}>
+              <Nav.Link className="nav-items" as={NavLink} to={'/account'} aria-label="Ir a mi cuenta">
                 Mi cuenta
               </Nav.Link>
-              <Nav.Link className="nav-items" as={NavLink} to={'/checkout'} style={{ textDecoration: 'none', color: 'inherit', border: '1px solid #d3d3d3', marginRight: '5px' }} aria-label="Ir al carrito">
+              <Nav.Link className="nav-items nav-cart-link" as={NavLink} to={'/checkout'} aria-label="Ir al carrito">
                 <IconCart  cart={cart} setCart={setCart} />
               </Nav.Link>
               <ThemeDropdown  />  
