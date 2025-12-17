@@ -2,9 +2,11 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import IconCart from './IconCart';
 import Account from '../pages/Account';
 import { NavLink } from 'react-router-dom';
+import Logo from '../assets/images/site/logo.webp';
+import { useNavigate } from 'react-router-dom';
 
 const Navegacion = ({ cart, setCart }) => {
-
+  const navigate = useNavigate();
   
   const links = [
     {
@@ -23,10 +25,19 @@ const Navegacion = ({ cart, setCart }) => {
 
   return (
     <>
-      <Navbar expand="lg" className="nav nav-tabs" role="tablist">
+        <Container className="text-center">
+            <img
+              src={Logo}
+              alt="Logo del sitio"
+              width="450"
+              // height="30"
+              className="d-inline-block align-top me-2"
+            />
+             </Container>
+      <Navbar expand="lg" className="nav nav-tabs sticky-top bg-white" style={{ top: '10px' }} role="tablist">
         <Container>
           <Navbar.Brand as={NavLink} to={'/'}>
-            Sitio de Compras
+            
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
