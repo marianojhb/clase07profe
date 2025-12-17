@@ -1,6 +1,8 @@
 import { Card, ListGroup, Button, Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Checkout = ({ cart, setCart }) => {
+  const navigate = useNavigate();
   const handleQtyChange = (id, qty) => {
     setCart((prev) => prev.map((p) => (p.id === id ? { ...p, cantidad: qty } : p)));
   };
@@ -22,7 +24,11 @@ const Checkout = ({ cart, setCart }) => {
               <Card className="border-0">
                 <Card.Body className="p-0 ">
                   <div className="d-flex justify-content-between align-items-start gap-3 ">
-                    <div className="d-flex gap-3 flex-grow-1">
+                    <div
+                      className="d-flex gap-3 flex-grow-1"
+                      role="button"
+                      onClick={() => navigate(`/products/${p.id}`)}
+                    >
                       {p.img && (
                         <img
                           src={p.img}
@@ -31,7 +37,7 @@ const Checkout = ({ cart, setCart }) => {
                         />
                       )}
                       <div>
-                        <div className="fw-semibold">{p.desc}</div>
+                        <div className="fw-semibold">{p.name}</div>
                         <div className="text-muted text-start small">ID: {p.id}</div>
                         <div className="text-muted text-start">${p.precio} c/u</div>
                       </div>
