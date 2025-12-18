@@ -1,23 +1,31 @@
 import { useEffect, useState } from 'react';
-import './App.css';
-import ThemeDropdown from './components/ThemeDropDown';
-import LoginPage from './pages/LoginPage';
-import ProductDetail from './pages/ProductDetail';
-import Account from './pages/Account';
-import About from './pages/About';
-import Checkout from './pages/Checkout';
-import Navegacion from './components/NavBar';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
-import Products from './pages/Products';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import loadingicon from './assets/icons8-loading.gif';
+import './App.css';
+
+// Componentes
+import RutaProtegida from './components/RutaProtegida';
+import ProductDetail from './pages/ProductDetail';
+import Navegacion from './components/NavBar';
+
+// Paginas
+import Home from './pages/Home';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Products from './pages/Products';
+import LoginPage from './pages/LoginPage';
+import Account from './pages/Account';
+import Checkout from './pages/Checkout';
 
 function App() {
-  // Estado para controlar la carga de datos, cartel indicador de carga
+  // Estados sobre la carga de datos
   const [cargando, setCargando] = useState(false);
   const [errorCarga, setErrorCarga] = useState(null);
 
+  // Estados del listado de productos y del carrito
+  const [listadoDeProductos, setListadoDeProductos] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  // Función para cargar los datos de productos desde la API
   useEffect(() => {
     async function cargarDatos() {
       setCargando(true);
@@ -39,7 +47,7 @@ function App() {
             console.error('Error al cargar los productos:', error);
             return [];
           }),
-        // Simulamos una demora de 3 segundos
+        // Simulamos una demora de 1 segundo
         new Promise((resolve) => setTimeout(() => resolve(), 1000)),
       ]);
 
@@ -57,31 +65,57 @@ function App() {
     cargarDatos();
   }, []);
 
-  const [listadoDeProductos, setListadoDeProductos] = useState([]);
-
-  const [cart, setCart] = useState([]);
-
   return (
     <>
       <Router>
         <div>
           <Navegacion cart={cart} setCart={setCart} />
           <Routes>
+            {/* Home */}
             <Route path="/" element={<Home listadoDeProductos={listadoDeProductos} cart={cart} setCart={setCart} />} />
-            <Route path="/products/:id" element={<ProductDetail cart={cart} setCart={setCart} />} />
-            <Route path="/account" element={<Account />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} />} />
-            <Route path="/contact" element={<Contact />} />
+
+            {/* Productos */}
             <Route
               path="/products"
               element={<Products listadoDeProductos={listadoDeProductos} cart={cart} setCart={setCart} />}
             />
+
+            {/* Detalle de Producto */}
+            <Route path="/products/:id" element={<ProductDetail cart={cart} setCart={setCart} />} />
+
+            {/* About */}
+            <Route path="/about" element={<About />} />
+
+            {/* Contacto */}
+            <Route path="/contact" element={<Contact />} />
+
+            {/* Login */}
             <Route path="/login" element={<LoginPage />} />
+
+            {/* Rutas protegidas: */}
+            {/* 1. Ruta Account */}
+            <Route
+              path="/account"
+              element={
+                <RutaProtegida>
+                  <Account />
+                </RutaProtegida>
+              }
+            />
+            {/* 2. Ruta Checkout */}
+            <Route
+              path="/checkout"
+              element={
+                <RutaProtegida>
+                  <Checkout cart={cart} setCart={setCart} />
+                </RutaProtegida>
+              }
+            />
           </Routes>
         </div>
       </Router>
 
+      {/* Cartel indicador de carga */}
       {cargando && (
         <div className="loading-container">
           <div className="spinner-border text-primary" role="status">
