@@ -6,6 +6,7 @@ import 'bootswatch/dist/brite/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
+import './logo.css';
 import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
@@ -21,8 +22,8 @@ createRoot(document.getElementById('root')).render(
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      toastClassName="toast show" 
-      bodyClassName="toast-body" 
+      toastClassName="toast show"
+      bodyClassName="toast-body"
     />
   </StrictMode>
 );

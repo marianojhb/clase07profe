@@ -3,14 +3,14 @@ import IconCart from './IconCart';
 import Account from '../pages/Account';
 import { NavLink } from 'react-router-dom';
 import ThemeDropdown from './ThemeDropdown';
-import Logo from '../assets/images/site/logo.webp';
+// import Logo from '../assets/images/site/logocmyk_s.svg';
 import { useNavigate } from 'react-router-dom';
 import { BsHouseFill } from 'react-icons/bs';
-
+import Logo from './Logo';
 
 const Navegacion = ({ cart, setCart }) => {
   const navigate = useNavigate();
-  
+
   const links = [
     {
       name: 'Acerca de',
@@ -28,15 +28,15 @@ const Navegacion = ({ cart, setCart }) => {
 
   return (
     <>
-        <Container className="text-center">
-            <img
+      <Container className="text-center py-3">
+        {/* <img
               src={Logo}
-              alt="Logo del sitio"
-              width="450"
-              // height="30"
-              className="d-inline-block align-top me-2"
-            />
-             </Container>
+              alt="Logo BambuGuazu"
+              className="logo-navbar"
+            /> */}
+
+        <Logo className="logo" />
+      </Container>
       <Navbar expand="lg" className="nav nav-tabs sticky-top" style={{ top: '10px' }} role="tablist">
         <Container>
           <Navbar.Brand as={NavLink} to={'/'}>
@@ -64,9 +64,9 @@ const Navegacion = ({ cart, setCart }) => {
                 Mi cuenta
               </Nav.Link>
               <Nav.Link className="nav-items nav-cart-link" as={NavLink} to={'/checkout'} aria-label="Ir al carrito">
-                <IconCart  cart={cart} setCart={setCart} />
+                <IconCart cart={cart} setCart={setCart} />
               </Nav.Link>
-              <ThemeDropdown  />  
+              <ThemeDropdown />
             </Nav>
           </Navbar.Collapse>
         </Container>

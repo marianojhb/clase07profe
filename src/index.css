@@ -69,7 +69,7 @@
 }
 
 .nav-cart-link:not(:hover):not(.active) {
-  border: 1px solid #d3d3d3 !important;
+  border: 2px solid #d3d3d3 !important;
 }
 
 .navbar {
@@ -80,10 +80,7 @@
   color: #fff;
 }
 
-
-
 /* -------------- */
-
 
 .loading-container {
   position: fixed;
@@ -103,3 +100,13 @@
 [data-bs-theme='light'] .loading-container .spinner-border {
   color: var(--bs-primary) !important;
 }
+
+.logo-navbar {
+  width: 300px;
+}
+
+[data-bs-theme='dark'] .logo-navbar {
+  filter: brightness(0) invert(1);
+}
+
+/* --------------- */
