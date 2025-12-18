@@ -4,17 +4,8 @@ const Contact = () => {
   return (
     <>
       <Container className="py-4" style={{ width: "50%" }}>
-        <h2 className="mb-3">Pagina Contact</h2>
+        <h2 className="mb-3">Pagina Contacto</h2>
 
-
-
-
-
-
-
-<>
-      <h2 className="py-4">Página de inicio de sesión</h2>
-      <p>Por favor, ingrese sus credenciales para acceder a su cuenta.</p>
 
       <form>
         <fieldset>
@@ -222,21 +213,6 @@ const Contact = () => {
           </button>
         </fieldset>
       </form>
-    </>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </Container>
     </>
   );

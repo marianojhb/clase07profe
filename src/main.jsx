@@ -8,10 +8,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import './logo.css';
 import App from './App.jsx';
+import { AuthProvider } from './context/AuthContext';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+   
     <ToastContainer
       position="bottom-right"
       autoClose={1000}

@@ -1,12 +1,13 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import IconCart from './IconCart';
-import Account from '../pages/Account';
 import { NavLink } from 'react-router-dom';
 import ThemeDropdown from './ThemeDropdown';
 // import Logo from '../assets/images/site/logocmyk_s.svg';
 import { useNavigate } from 'react-router-dom';
 import { BsHouseFill } from 'react-icons/bs';
 import Logo from './Logo';
+import AccountBoton from './AccountButton';
+import AccountButton from './AccountButton';
 
 const Navegacion = ({ cart, setCart }) => {
   const navigate = useNavigate();
@@ -60,8 +61,15 @@ const Navegacion = ({ cart, setCart }) => {
               ))}
             </Nav>
             <Nav style={{ gap: '0.2rem' }}>
-              <Nav.Link className="nav-items" as={NavLink} to={'/account'} aria-label="Ir a mi cuenta">
-                Mi cuenta
+              <Nav.Link
+                className="nav-items"
+                as={NavLink}
+                to={'/account'}
+                aria-label="Ir a mi cuenta"
+                id="mi-cuenta-link"
+              >
+                <AccountButton />
+                
               </Nav.Link>
               <Nav.Link className="nav-items nav-cart-link" as={NavLink} to={'/checkout'} aria-label="Ir al carrito">
                 <IconCart cart={cart} setCart={setCart} />
