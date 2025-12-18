@@ -1,6 +1,6 @@
 import { RiShoppingCart2Line } from 'react-icons/ri';
 import { RiShoppingCart2Fill } from 'react-icons/ri';
-import { Button } from 'react-bootstrap';
+import { Button, Tooltip, OverlayTrigger } from 'react-bootstrap';
 
 const IconCart = ({ cart, setCart }) => {
   const totalItems = cart.reduce((acumulador, producto) => acumulador + producto.cantidad, 0);
@@ -17,6 +17,10 @@ const IconCart = ({ cart, setCart }) => {
       <div>
         {totalItems > 0 ? <RiShoppingCart2Fill size={24} /> : <RiShoppingCart2Line size={24} />}
         &nbsp;&nbsp; Items:&nbsp;{totalItems} &nbsp;&nbsp; $&nbsp;{totalAmount.toLocaleString()} &nbsp;&nbsp;
+        <OverlayTrigger
+          placement="top"
+          overlay={<Tooltip id="vaciar-carrito-tooltip">Vaciar carrito</Tooltip>}
+        >
         <Button
           size="sm"
           className="btn-xs align-top "
@@ -30,7 +34,7 @@ const IconCart = ({ cart, setCart }) => {
           }}
         >
           ✕
-        </Button>
+        </Button></OverlayTrigger>
       </div>
     </>
   );
