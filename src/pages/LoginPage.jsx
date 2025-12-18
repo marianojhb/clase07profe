@@ -1,15 +1,18 @@
 import { Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/account'; // destino por defecto
+
   const handleLogin = (e) => {
     e.preventDefault();
     const credencial1 = { email: 'mbelgrano@gmail.com', password: '123' };
     if (e.target.email.value === credencial1.email && e.target.password.value === credencial1.password) {
       localStorage.setItem('auth', 'true');
       alert('Login exitoso');
-      navigate('/account', { replace: true });
+      navigate(from, { replace: true });
     } else {
       alert('Credenciales incorrectas');
     }
